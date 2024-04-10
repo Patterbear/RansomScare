@@ -16,5 +16,19 @@ namespace RansomScare
         {
             InitializeComponent();
         }
+
+        private void SplashScreen_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void githubLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // Open my Github profile
+            System.Diagnostics.Process.Start("http://github.com/Patterbear");
+
+            // Set link to purple to indicate it has been visited
+            githubLink.LinkVisited = true;
+        }
     }
 }
