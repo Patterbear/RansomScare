@@ -15,6 +15,11 @@ namespace RansomScare
         public SplashScreen()
         {
             InitializeComponent();
+
+            // Prevent resizing
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = false;
         }
 
         private void SplashScreen_Load(object sender, EventArgs e)
@@ -36,8 +41,12 @@ namespace RansomScare
             // Checks that the tick box has been ticked
             if(understoodTickBox.Checked)
             {
-                Console.WriteLine("Proceed");
-                // Proceed to next window
+                // Launches encryption screen and closes itself
+                this.Hide();
+                EncryptionScreen encryptionScreen = new EncryptionScreen();
+                encryptionScreen.ShowDialog();
+                this.Close();
+
             } else
             {
                 MessageBox.Show("Please read the information and tick the checkbox to proceed.", "Warning");
