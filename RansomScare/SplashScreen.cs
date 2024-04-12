@@ -31,14 +31,17 @@ namespace RansomScare
             githubLink.LinkVisited = true;
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void proceedButton_Click(object sender, EventArgs e)
         {
-
+            // Checks that the tick box has been ticked
+            if(understoodTickBox.Checked)
+            {
+                Console.WriteLine("Proceed");
+                // Proceed to next window
+            } else
+            {
+                MessageBox.Show("Please read the information and tick the checkbox to proceed.", "Warning");
+            }
         }
     }
 }

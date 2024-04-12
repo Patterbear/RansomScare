@@ -116,7 +116,6 @@
             this.understoodTickBox.TabIndex = 6;
             this.understoodTickBox.Text = "I have read and understood the above information.";
             this.understoodTickBox.UseVisualStyleBackColor = true;
-            this.understoodTickBox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // proceedButton
             // 
