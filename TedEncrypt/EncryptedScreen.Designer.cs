@@ -1,4 +1,4 @@
-﻿namespace RansomScare
+﻿namespace TedEncrypt
 {
     partial class EncryptedScreen
     {
@@ -87,7 +87,7 @@
             this.Controls.Add(this.successImage);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EncryptedScreen";
-            this.Text = "RansomScare - Encrypted";
+            this.Text = "TedEncrypt - Encrypted";
             ((System.ComponentModel.ISupportInitialize)(this.successImage)).EndInit();
             this.ResumeLayout(false);
 

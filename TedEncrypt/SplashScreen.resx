@@ -1712,7 +1712,15 @@
 </value>
   </data>
   <data name="infoLabel1.Text" xml:space="preserve">
-    <value>RansomScare is an educational ransomware attack simulation. It will encrypt files in the current directory using a generated key. This key will be stored in the current directory and will be used for file decryption.</value>
+    <value>TedEncrypt is a file encryption tool. It will encrypt files in the current directory using a generated key.
+
+This key will appear in the current directory and will be used for file decryption.
+
+You should move the key to a secure location, and only move it back to this folder when decrypting.
+
+If the key is deleted, you WILL NOT be able to recover the encrypyted files.
+
+</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

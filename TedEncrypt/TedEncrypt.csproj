@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E072BEDF-5F33-4609-A080-E7D94BAE1338}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>RansomScare</RootNamespace>
-    <AssemblyName>RansomScare</AssemblyName>
+    <RootNamespace>TedEncrypt</RootNamespace>
+    <AssemblyName>TedEncrypt</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -81,6 +81,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="EncryptedScreen.resx">
       <DependentUpon>EncryptedScreen.cs</DependentUpon>
