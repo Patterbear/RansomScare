@@ -33,7 +33,10 @@ namespace TedEncrypt
             // Checks for key before attempting decryption
             if(CheckForKey() is true)
             {
-                Console.WriteLine("Key found.");
+                this.Hide();
+                DecryptionScreen decryptionScreen = new DecryptionScreen();
+                decryptionScreen.ShowDialog();
+                this.Close();
             } else
             {
                 MessageBox.Show("Please put the key into the directory.", "Key not found");

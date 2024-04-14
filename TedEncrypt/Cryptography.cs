@@ -33,6 +33,21 @@ namespace TedEncrypt
             }
         }
 
+        public void DecryptFiles()
+        {
+            // Get list of files in directory
+            List<string> files = ScanFiles();
+
+            // Retrieve saved key
+            string key = RetrieveKey();
+
+            // Decrypt files
+            for (int i = 0; i < files.Count; i++)
+            {
+                DecryptFile(files[i], key);
+            }
+        }
+
 
         // Directory file scan function
         // returns list of all files in the directory, excluding TedEncrypt's own
@@ -132,7 +147,6 @@ namespace TedEncrypt
         // encrypts an individual file
         private void EncryptFile(string file, string key)
         {
-            Console.WriteLine(file);
 
             // Get list of targets and their shift values
             string[] keys = key.Split('-');
@@ -140,11 +154,9 @@ namespace TedEncrypt
             // Creates byte array from file
             byte[] fileBytes = File.ReadAllBytes(file);
 
-            Console.WriteLine(fileBytes.Length.ToString());
-
             // Change target bytes
             for(int i = 0; i < fileBytes.Length; i++)
-            {;
+            {
 
                 byte[] shift = BitConverter.GetBytes(Int32.Parse(keys[i]));
 
@@ -152,6 +164,32 @@ namespace TedEncrypt
                 if (!BitConverter.IsLittleEndian) { Array.Reverse(shift); }
 
                 fileBytes[i] = (byte) (fileBytes[i] + shift[0]);
+            }
+
+            // Save file
+            File.WriteAllBytes(file, fileBytes);
+        }
+
+        // Decrypt file function
+        // decrypts single file with key
+        private void DecryptFile(string file, string key)
+        {
+            // Get list of targets and their shift values
+            string[] keys = key.Split('-');
+
+            // Creates byte array from file
+            byte[] fileBytes = File.ReadAllBytes(file);
+
+            // Change target bytes
+            for (int i = 0; i < fileBytes.Length; i++)
+            {
+
+                byte[] shift = BitConverter.GetBytes(Int32.Parse(keys[i]));
+
+                // shift value is always in the first byte, this ensures the byte at index 0 will be used
+                if (!BitConverter.IsLittleEndian) { Array.Reverse(shift); }
+
+                fileBytes[i] = (byte)(fileBytes[i] - shift[0]);
             }
 
             // Save file

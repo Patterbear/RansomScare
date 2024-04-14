@@ -47,12 +47,12 @@
             // 
             // logoPictureBox
             // 
-            this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.logoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.logoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.Image")));
-            this.logoPictureBox.Location = new System.Drawing.Point(0, 96);
+            this.logoPictureBox.Location = new System.Drawing.Point(11, 73);
             this.logoPictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.logoPictureBox.Name = "logoPictureBox";
-            this.logoPictureBox.Size = new System.Drawing.Size(800, 354);
+            this.logoPictureBox.Size = new System.Drawing.Size(323, 355);
             this.logoPictureBox.TabIndex = 1;
             this.logoPictureBox.TabStop = false;
             // 
@@ -61,7 +61,7 @@
             this.githubLink.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.githubLink.AutoSize = true;
             this.githubLink.LinkArea = new System.Windows.Forms.LinkArea(48, 17);
-            this.githubLink.Location = new System.Drawing.Point(15, 424);
+            this.githubLink.Location = new System.Drawing.Point(15, 432);
             this.githubLink.Name = "githubLink";
             this.githubLink.Size = new System.Drawing.Size(340, 17);
             this.githubLink.TabIndex = 2;
@@ -116,7 +116,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SplashScreen";
             this.Text = "TedEncrypt - Welcome";
-            this.Load += new System.EventHandler(this.SplashScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

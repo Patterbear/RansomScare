@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,6 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cryptography.cs" />
+    <Compile Include="DecryptionScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DecryptionScreen.Designer.cs">
+      <DependentUpon>DecryptionScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="EncryptionScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +76,9 @@
     <Compile Include="EncryptedScreen.Designer.cs">
       <DependentUpon>EncryptedScreen.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DecryptionScreen.resx">
+      <DependentUpon>DecryptionScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EncryptionScreen.resx">
       <DependentUpon>EncryptionScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -98,6 +110,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

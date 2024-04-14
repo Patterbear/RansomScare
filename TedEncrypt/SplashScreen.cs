@@ -22,11 +22,6 @@ namespace TedEncrypt
             MinimizeBox = false;
         }
 
-        private void SplashScreen_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void githubLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             // Open my Github profile
