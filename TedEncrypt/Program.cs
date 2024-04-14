@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +17,32 @@ namespace TedEncrypt
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SplashScreen());
+            CheckTedEncryptStatus();
+            
+        }
+
+        static void CheckTedEncryptStatus()
+        {
+            string statusFile = Directory.GetCurrentDirectory() + "/.tedencrypt";
+
+            if (File.Exists(statusFile))
+            {
+                if (File.ReadAllText(statusFile).Equals("e"))
+                {
+                    Application.Run(new EncryptedScreen());
+                }
+                else if (File.ReadAllText(statusFile).Equals("d"))
+                {
+                    Application.Run(new DecryptedScreen());
+                } else
+                {
+                    Application.Run(new SplashScreen());
+                }
+            } else
+            {
+                Application.Run(new SplashScreen());
+            }
+            
         }
     }
 }

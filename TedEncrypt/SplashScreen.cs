@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -36,6 +38,11 @@ namespace TedEncrypt
             // Checks that the tick box has been ticked
             if(understoodTickBox.Checked)
             {
+                // creates initial .tedencrypt file
+                string tedencryptFile = Directory.GetCurrentDirectory() + "/.tedencrypt";
+                File.Create(tedencryptFile);
+                File.SetAttributes(tedencryptFile, FileAttributes.Hidden);
+
                 // Launches encryption screen and closes itself
                 this.Hide();
                 EncryptionScreen encryptionScreen = new EncryptionScreen();

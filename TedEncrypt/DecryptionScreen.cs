@@ -33,6 +33,9 @@ namespace TedEncrypt
 
         private void decryptionDoneButton_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            DecryptedScreen decryptedScreen = new DecryptedScreen();
+            decryptedScreen.ShowDialog();
             this.Close();
         }
     }

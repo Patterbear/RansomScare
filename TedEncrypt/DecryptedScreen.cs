@@ -11,16 +11,11 @@ using System.Windows.Forms;
 
 namespace TedEncrypt
 {
-    public partial class EncryptedScreen : Form
+    public partial class DecryptedScreen : Form
     {
-        public EncryptedScreen()
+        public DecryptedScreen()
         {
             InitializeComponent();
-
-            // Prevent resizing
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            MaximizeBox = false;
-            MinimizeBox = false;
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -31,13 +26,14 @@ namespace TedEncrypt
         private void decryptButton_Click(object sender, EventArgs e)
         {
             // Checks for key before attempting decryption
-            if(File.Exists(Directory.GetCurrentDirectory() + "\\key"))
+            if (File.Exists(Directory.GetCurrentDirectory() + "\\key"))
             {
                 this.Hide();
-                DecryptionScreen decryptionScreen = new DecryptionScreen();
-                decryptionScreen.ShowDialog();
+                EncryptionScreen encryptionScreen = new EncryptionScreen();
+                encryptionScreen.ShowDialog();
                 this.Close();
-            } else
+            }
+            else
             {
                 MessageBox.Show("Please put the key into the directory.", "Key not found");
             }

@@ -31,6 +31,12 @@ namespace TedEncrypt
             {
                 EncryptFile(files[i], key);
             }
+
+            // Set hidden .tedencrypt file to 'e' to indicate directory files are encrypted
+            string tedEncryptFile = Directory.GetCurrentDirectory() + "/.tedencrypt";
+            File.SetAttributes(tedEncryptFile, FileAttributes.Normal);
+            File.WriteAllText(tedEncryptFile, "e");
+            File.SetAttributes(tedEncryptFile, FileAttributes.Hidden);
         }
 
         public void DecryptFiles()
@@ -46,6 +52,12 @@ namespace TedEncrypt
             {
                 DecryptFile(files[i], key);
             }
+
+            // Set hidden .tedencrypt file to 'd' to indicate directory files are decrypted
+            string tedEncryptFile = Directory.GetCurrentDirectory() + "/.tedencrypt";
+            File.SetAttributes(tedEncryptFile, FileAttributes.Normal);
+            File.WriteAllText(tedEncryptFile, "d");
+            File.SetAttributes(tedEncryptFile, FileAttributes.Hidden);
         }
 
 
@@ -62,6 +74,7 @@ namespace TedEncrypt
             // Remove 'key' and executable to prevent encrypting them
             files.Remove(directory + "\\key");
             files.Remove(directory + "\\TedEncrypt.exe");
+            files.Remove(directory + "\\.tedencrypt");
 
             // Exclude .pdb and .exe.config for debug
             files.Remove(directory + "\\TedEncrypt.exe.config");
