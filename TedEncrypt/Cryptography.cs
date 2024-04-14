@@ -49,7 +49,7 @@ namespace TedEncrypt
             files.Remove(directory + "\\TedEncrypt.exe");
 
             // Exclude .pdb and .exe.config for debug
-            files.Remove(directory + "\\TedEncrypt");
+            files.Remove(directory + "\\TedEncrypt.exe.config");
             files.Remove(directory + "\\TedEncrypt.pdb");
 
             return files;

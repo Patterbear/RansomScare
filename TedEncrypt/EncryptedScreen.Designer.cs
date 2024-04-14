@@ -64,6 +64,7 @@
             this.decryptButton.TabIndex = 3;
             this.decryptButton.Text = "Decrypt";
             this.decryptButton.UseVisualStyleBackColor = true;
+            this.decryptButton.Click += new System.EventHandler(this.decryptButton_Click);
             // 
             // exitButton
             // 
