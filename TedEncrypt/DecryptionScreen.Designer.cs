@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DecryptionScreen));
             this.decryptionDoneButton = new System.Windows.Forms.Button();
-            this.statusBar = new System.Windows.Forms.ProgressBar();
             this.statusLabel = new System.Windows.Forms.Label();
             this.decryptionImage = new System.Windows.Forms.PictureBox();
             this.beginButton = new System.Windows.Forms.Button();
@@ -42,22 +41,13 @@
             this.decryptionDoneButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.decryptionDoneButton.Enabled = false;
             this.decryptionDoneButton.Font = new System.Drawing.Font("Segoe UI Semibold", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.decryptionDoneButton.Location = new System.Drawing.Point(107, 276);
+            this.decryptionDoneButton.Location = new System.Drawing.Point(113, 253);
             this.decryptionDoneButton.Name = "decryptionDoneButton";
             this.decryptionDoneButton.Size = new System.Drawing.Size(134, 60);
             this.decryptionDoneButton.TabIndex = 9;
             this.decryptionDoneButton.Text = "Finish";
             this.decryptionDoneButton.UseVisualStyleBackColor = true;
             this.decryptionDoneButton.Click += new System.EventHandler(this.decryptionDoneButton_Click);
-            // 
-            // statusBar
-            // 
-            this.statusBar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.statusBar.Location = new System.Drawing.Point(85, 242);
-            this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(195, 23);
-            this.statusBar.Step = 100;
-            this.statusBar.TabIndex = 8;
             // 
             // statusLabel
             // 
@@ -83,7 +73,7 @@
             // 
             this.beginButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.beginButton.Font = new System.Drawing.Font("Segoe UI Semibold", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.beginButton.Location = new System.Drawing.Point(107, 276);
+            this.beginButton.Location = new System.Drawing.Point(113, 253);
             this.beginButton.Name = "beginButton";
             this.beginButton.Size = new System.Drawing.Size(134, 60);
             this.beginButton.TabIndex = 11;
@@ -95,11 +85,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(359, 363);
+            this.ClientSize = new System.Drawing.Size(359, 336);
             this.Controls.Add(this.beginButton);
             this.Controls.Add(this.decryptionImage);
             this.Controls.Add(this.decryptionDoneButton);
-            this.Controls.Add(this.statusBar);
             this.Controls.Add(this.statusLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DecryptionScreen";
@@ -113,7 +102,6 @@
         #endregion
 
         private System.Windows.Forms.Button decryptionDoneButton;
-        private System.Windows.Forms.ProgressBar statusBar;
         private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.PictureBox decryptionImage;
         private System.Windows.Forms.Button beginButton;

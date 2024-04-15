@@ -42,9 +42,6 @@ namespace TedEncrypt
             // Decrypts files
             new Cryptography().DecryptFiles();
 
-            // Updates progress bar
-            statusBar.PerformStep();
-
             // Update status label
             statusLabel.Text = "Status: Decrypted";
             statusLabel.Update();
