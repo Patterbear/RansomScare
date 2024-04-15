@@ -4,9 +4,9 @@ using System.Runtime.InteropServices;
 
 // General Information
 [assembly: AssemblyTitle("TedEncrypt")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyDescription("File encryption tool")]
+[assembly: AssemblyConfiguration("Retail")]
+[assembly: AssemblyCompany("Patterbear Solutions")]
 [assembly: AssemblyProduct("TedEncrypt")]
 [assembly: AssemblyCopyright("Copyright ©  2024")]
 [assembly: AssemblyTrademark("")]

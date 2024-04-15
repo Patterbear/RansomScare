@@ -33,6 +33,7 @@
             this.statusBar = new System.Windows.Forms.ProgressBar();
             this.statusLabel = new System.Windows.Forms.Label();
             this.decryptionImage = new System.Windows.Forms.PictureBox();
+            this.beginButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.decryptionImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,7 +42,7 @@
             this.decryptionDoneButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.decryptionDoneButton.Enabled = false;
             this.decryptionDoneButton.Font = new System.Drawing.Font("Segoe UI Semibold", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.decryptionDoneButton.Location = new System.Drawing.Point(116, 281);
+            this.decryptionDoneButton.Location = new System.Drawing.Point(107, 276);
             this.decryptionDoneButton.Name = "decryptionDoneButton";
             this.decryptionDoneButton.Size = new System.Drawing.Size(134, 60);
             this.decryptionDoneButton.TabIndex = 9;
@@ -52,9 +53,9 @@
             // statusBar
             // 
             this.statusBar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.statusBar.Location = new System.Drawing.Point(85, 247);
+            this.statusBar.Location = new System.Drawing.Point(85, 242);
             this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(193, 23);
+            this.statusBar.Size = new System.Drawing.Size(195, 23);
             this.statusBar.Step = 100;
             this.statusBar.TabIndex = 8;
             // 
@@ -63,26 +64,39 @@
             this.statusLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.statusLabel.AutoSize = true;
             this.statusLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusLabel.Location = new System.Drawing.Point(100, 207);
+            this.statusLabel.Location = new System.Drawing.Point(67, 202);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(171, 37);
+            this.statusLabel.Size = new System.Drawing.Size(224, 37);
             this.statusLabel.TabIndex = 7;
-            this.statusLabel.Text = "Decrypting...";
+            this.statusLabel.Text = "Status: Encrypted";
             // 
             // decryptionImage
             // 
             this.decryptionImage.Image = ((System.Drawing.Image)(resources.GetObject("decryptionImage.Image")));
-            this.decryptionImage.Location = new System.Drawing.Point(83, 12);
+            this.decryptionImage.Location = new System.Drawing.Point(85, 12);
             this.decryptionImage.Name = "decryptionImage";
             this.decryptionImage.Size = new System.Drawing.Size(195, 178);
             this.decryptionImage.TabIndex = 10;
             this.decryptionImage.TabStop = false;
+            // 
+            // beginButton
+            // 
+            this.beginButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.beginButton.Font = new System.Drawing.Font("Segoe UI Semibold", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.beginButton.Location = new System.Drawing.Point(107, 276);
+            this.beginButton.Name = "beginButton";
+            this.beginButton.Size = new System.Drawing.Size(134, 60);
+            this.beginButton.TabIndex = 11;
+            this.beginButton.Text = "Begin";
+            this.beginButton.UseVisualStyleBackColor = true;
+            this.beginButton.Click += new System.EventHandler(this.beginButton_Click);
             // 
             // DecryptionScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(359, 363);
+            this.Controls.Add(this.beginButton);
             this.Controls.Add(this.decryptionImage);
             this.Controls.Add(this.decryptionDoneButton);
             this.Controls.Add(this.statusBar);
@@ -102,5 +116,6 @@
         private System.Windows.Forms.ProgressBar statusBar;
         private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.PictureBox decryptionImage;
+        private System.Windows.Forms.Button beginButton;
     }
 }

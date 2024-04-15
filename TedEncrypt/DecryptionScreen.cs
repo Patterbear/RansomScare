@@ -20,15 +20,6 @@ namespace TedEncrypt
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
-
-            // Encrypts files
-            new Cryptography().DecryptFiles();
-
-            // Updates progress bar
-            statusBar.PerformStep();
-
-            // Enables 'finish' button
-            decryptionDoneButton.Enabled = true;
         }
 
         private void decryptionDoneButton_Click(object sender, EventArgs e)
@@ -37,6 +28,32 @@ namespace TedEncrypt
             DecryptedScreen decryptedScreen = new DecryptedScreen();
             decryptedScreen.ShowDialog();
             this.Close();
+        }
+
+        private void beginButton_Click(object sender, EventArgs e)
+        {
+            // Disable 'begin' button
+            beginButton.Enabled = false;
+
+            // Update status label
+            statusLabel.Text = "Status: Decrypting...";
+            statusLabel.Update();
+
+            // Decrypts files
+            new Cryptography().DecryptFiles();
+
+            // Updates progress bar
+            statusBar.PerformStep();
+
+            // Update status label
+            statusLabel.Text = "Status: Decrypted";
+            statusLabel.Update();
+
+            // Hide 'begin' button
+            beginButton.Hide();
+
+            // Enables 'finish' button
+            decryptionDoneButton.Enabled = true;
         }
     }
 }

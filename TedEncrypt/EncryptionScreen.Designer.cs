@@ -33,6 +33,7 @@
             this.statusLabel = new System.Windows.Forms.Label();
             this.statusBar = new System.Windows.Forms.ProgressBar();
             this.encryptionDoneButton = new System.Windows.Forms.Button();
+            this.beginButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.encryptionImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,16 +52,16 @@
             this.statusLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.statusLabel.AutoSize = true;
             this.statusLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusLabel.Location = new System.Drawing.Point(100, 207);
+            this.statusLabel.Location = new System.Drawing.Point(67, 202);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(167, 37);
+            this.statusLabel.Size = new System.Drawing.Size(228, 37);
             this.statusLabel.TabIndex = 1;
-            this.statusLabel.Text = "Encrypting...";
+            this.statusLabel.Text = "Status: Decrypted";
             // 
             // statusBar
             // 
             this.statusBar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.statusBar.Location = new System.Drawing.Point(85, 247);
+            this.statusBar.Location = new System.Drawing.Point(85, 242);
             this.statusBar.Name = "statusBar";
             this.statusBar.Size = new System.Drawing.Size(193, 23);
             this.statusBar.Step = 100;
@@ -71,7 +72,7 @@
             this.encryptionDoneButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.encryptionDoneButton.Enabled = false;
             this.encryptionDoneButton.Font = new System.Drawing.Font("Segoe UI Semibold", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.encryptionDoneButton.Location = new System.Drawing.Point(116, 281);
+            this.encryptionDoneButton.Location = new System.Drawing.Point(107, 276);
             this.encryptionDoneButton.Name = "encryptionDoneButton";
             this.encryptionDoneButton.Size = new System.Drawing.Size(134, 60);
             this.encryptionDoneButton.TabIndex = 3;
@@ -79,11 +80,24 @@
             this.encryptionDoneButton.UseVisualStyleBackColor = true;
             this.encryptionDoneButton.Click += new System.EventHandler(this.encryptionDoneButton_Click);
             // 
+            // beginButton
+            // 
+            this.beginButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.beginButton.Font = new System.Drawing.Font("Segoe UI Semibold", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.beginButton.Location = new System.Drawing.Point(107, 276);
+            this.beginButton.Name = "beginButton";
+            this.beginButton.Size = new System.Drawing.Size(134, 60);
+            this.beginButton.TabIndex = 4;
+            this.beginButton.Text = "Begin";
+            this.beginButton.UseVisualStyleBackColor = true;
+            this.beginButton.Click += new System.EventHandler(this.beginButton_Click);
+            // 
             // EncryptionScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(359, 363);
+            this.Controls.Add(this.beginButton);
             this.Controls.Add(this.encryptionDoneButton);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.statusLabel);
@@ -103,5 +117,6 @@
         private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.ProgressBar statusBar;
         private System.Windows.Forms.Button encryptionDoneButton;
+        private System.Windows.Forms.Button beginButton;
     }
 }
