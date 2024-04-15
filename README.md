@@ -20,6 +20,3 @@ A 'key' file will be generated and will be used to encrypt the files. Once encry
 
 ### Decryption
 Move the key file back to the directory whose files you wish to decrypt. Run the 'TedEncrypt.exe' executable and press 'Decrypt'. As long as the correct key file is present, the files will decrypt.
-
-## Disclaimer
-For some reason, presumably as it's
