@@ -40,7 +40,7 @@ namespace TedEncrypt
             {
                 // creates initial .tedencrypt file
                 string tedencryptFile = Directory.GetCurrentDirectory() + "/.tedencrypt";
-                File.Create(tedencryptFile);
+                File.WriteAllText(tedencryptFile, "");
                 File.SetAttributes(tedencryptFile, FileAttributes.Hidden);
 
                 // Launches encryption screen and closes itself
