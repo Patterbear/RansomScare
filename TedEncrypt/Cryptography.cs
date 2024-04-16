@@ -106,38 +106,18 @@ namespace TedEncrypt
 
         // Generates and saves key
         // the key is comprised of integers known as shifts
-        // shifts are numbers to be added to the target bytes to corrupt the file
+        // shifts are numbers to be added to each byte to corrupt the file
         private void GenerateKey(int largestFileBytes)
         {
-
-            // Random object
+            // Random object for shift amount generation
             Random random = new Random();
-
-            // List of bytes to target
-            List<int> targets = new List<int>();
-
-
-            // Adds targets up to largest file size in directory
-            for (int i = 0; i < largestFileBytes + 1; i++)
-            {
-                targets.Add(i);
-            }
-
-            // Shifts amount for target bytes
-            List<int> shifts = new List<int>();
-
-            for (int i = 0; i < targets.Count; i++)
-            {
-                int shift = random.Next(255); // 255 is maximum byte value
-                shifts.Add(shift);
-            }
 
             // Format key
             string key = "";
 
-            for(int i = 0;i < shifts.Count;i++)
+            for (int i = 0;i < largestFileBytes;i++)
             {
-                key += shifts[i].ToString() + "-";
+                key += random.Next(255).ToString() + "-";
             }
 
             // Remove final '-'
