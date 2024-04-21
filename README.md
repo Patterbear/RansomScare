@@ -1,5 +1,5 @@
 # TedEncrypt File Encryption Tool
-A GUI-based file encryption tool written in C# that makes use of the .NET framework. Files in the current directory are 'scrambled' byte by byte according to a generated key, rendering them completely unintelligible. They can only be decrypted if the key is placed into the current directory.
+A GUI-based file encryption tool written in C# that makes use of the .NET framework. Files in the current directory are encrypted bytewise according to an unconditionally secure cipher with a generated key, rendering them completely unintelligible. They can only be decrypted if the key is placed into the current directory.
 
 
 ## Download and Use (Standalone .exe file)
