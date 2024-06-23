@@ -3,7 +3,7 @@ A GUI-based file encryption tool written in C# that makes use of the .NET framew
 
 
 ## Download and Use (Standalone .exe file)
-The program in its easy 'click-to-run' .exe file can be  downloaded from https://drive.google.com/file/d/1Oa7S22P6VwH9V30_Fko7lx8ihMqtHAF8/.
+The program in its easy 'click-to-run' .exe file can be  downloaded [here](https://github.com/Patterbear/TedEncrypt/releases/download/v1.0.0/TedEncrypt.exe).
 
 To install, simply place the file into the directory whose files you wish to encrypt/decrypt.
 
